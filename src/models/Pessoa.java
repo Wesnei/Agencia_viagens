@@ -4,6 +4,11 @@ public class Pessoa {
 
     private int id;
     private String nome;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String email;
     private String telefone;
 
