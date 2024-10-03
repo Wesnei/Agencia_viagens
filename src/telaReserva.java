@@ -74,7 +74,7 @@ public class telaReserva extends JFrame {
         pacoteIdField.setPreferredSize(new Dimension(200, 30));
         rightPanel.add(pacoteIdField, gbc);
 
-        JPanel buttonsPanel = new JPanel(new GridLayout(1, 2, 10, 0)); // Layout com espaçamento entre botões
+        JPanel buttonsPanel = new JPanel(new GridLayout(1, 2, 10, 0)); 
         buttonsPanel.setPreferredSize(new Dimension(200, 40));
 
         confirmarButton = new JButton("Confirmar");
