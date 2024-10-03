@@ -1,3 +1,5 @@
+package models;
+
 public class PacoteTuristico {
 
     private int id;

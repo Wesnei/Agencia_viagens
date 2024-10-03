@@ -1,3 +1,5 @@
+package models;
+
 public class Pessoa {
 
     private int id;

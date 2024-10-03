@@ -1,3 +1,5 @@
+package models;
+
 public class Destino {
 
     private int id;

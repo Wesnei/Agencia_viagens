@@ -38,10 +38,10 @@ public class TelaInicial extends JFrame {
         JLabel selecioneOperacaoLabel = new JLabel("Selecione uma Operação", JLabel.CENTER);
         selecioneOperacaoLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
-        cadastrarPessoaButton = new JButton("Cadastrar Pessoa");
+        cadastrarPessoaButton = new JButton("Cadastrar models.Pessoa");
         cadastrarPacoteButton = new JButton("Cadastrar Pacote");
-        cadastrarDestinoButton = new JButton("Cadastrar Destino");
-        fazerReservaButton = new JButton("Fazer Reserva");
+        cadastrarDestinoButton = new JButton("Cadastrar models.Destino");
+        fazerReservaButton = new JButton("Fazer models.Reserva");
 
         Color buttonColor = new Color(91, 128, 128);
         cadastrarPessoaButton.setBackground(buttonColor);
