@@ -1,5 +1,10 @@
+import dao.PessoaDao;
+import models.Pessoa;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CadastrarPessoa extends JFrame {
 
@@ -86,6 +91,20 @@ public class CadastrarPessoa extends JFrame {
         add(rightPanel, BorderLayout.CENTER);
 
         setVisible(true);
+        cadastrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nome = nomeField.getText();
+                String email = emailField.getText();
+                String telefone = telefoneField.getText();
+
+                Pessoa pessoa = new Pessoa(0, nome, email, telefone);
+                PessoaDao pessoaDao = new PessoaDao();
+                pessoaDao.inserir(pessoa);
+
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+            }
+        });
     }
 }
 

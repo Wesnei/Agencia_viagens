@@ -11,14 +11,13 @@ public class PessoaDao {
     public void inserir(Pessoa pessoa) {
         Connection connection = MyJDBC.getConnection();
 
-        String sql = "INSERT INTO pessoa (id, nome, email, telefone) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO `travel_schema`.`pessoa` (`nome`, `email`, `telefone`) VALUES (?, ?, ?)";
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, pessoa.getId());
-            stmt.setString(2, pessoa.getNome());
-            stmt.setString(3, pessoa.getEmail());
-            stmt.setString(4, pessoa.getTelefone());
+            stmt.setString(1, pessoa.getNome());
+            stmt.setString(2, pessoa.getEmail());
+            stmt.setString(3, pessoa.getTelefone());
 
             stmt.executeUpdate();
             System.out.println("Pessoa inserida com sucesso!");

@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaInicial extends JFrame {
 
@@ -38,10 +40,10 @@ public class TelaInicial extends JFrame {
         JLabel selecioneOperacaoLabel = new JLabel("Selecione uma Operação", JLabel.CENTER);
         selecioneOperacaoLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
-        cadastrarPessoaButton = new JButton("Cadastrar models.Pessoa");
+        cadastrarPessoaButton = new JButton("Cadastrar Pessoa");
         cadastrarPacoteButton = new JButton("Cadastrar Pacote");
-        cadastrarDestinoButton = new JButton("Cadastrar models.Destino");
-        fazerReservaButton = new JButton("Fazer models.Reserva");
+        cadastrarDestinoButton = new JButton("Cadastrar Destino");
+        fazerReservaButton = new JButton("Fazer Reserva");
 
         Color buttonColor = new Color(91, 128, 128);
         cadastrarPessoaButton.setBackground(buttonColor);
@@ -75,5 +77,11 @@ public class TelaInicial extends JFrame {
         add(splitPane);
 
         setVisible(true);
+        cadastrarPessoaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               CadastrarPessoa cadastrarPessoa = new CadastrarPessoa();
+            }
+        });
     }
 }

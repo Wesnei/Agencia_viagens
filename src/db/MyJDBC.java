@@ -12,7 +12,9 @@ public class MyJDBC {
                     "root",
                     "9ZDTCpt6@"
             );
+            System.out.println("Conexão Estabelecida com Sucesso!");
         } catch (SQLException e) {
+            System.out.println("Erro ao Estabelecer Conexão com o Banco de Dado " + e.getMessage());
             e.printStackTrace();
         }
         return connection;
