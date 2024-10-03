@@ -1,21 +1,16 @@
-import dao.PessoaDao;
-import models.Pessoa;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CadastrarPessoa extends JFrame {
+public class CadastrarDestino extends JFrame {
 
     private JTextField nomeField;
-    private JTextField emailField;
-    private JTextField telefoneField;
-    private JTextField cpfField;
+    private JTextField descricaoField;
     private JButton cadastrarButton;
 
-    public CadastrarPessoa() {
-        setTitle("Cadastro");
+    public CadastrarDestino() {
+        setTitle("Cadastro de Destino");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 500);
         setLocationRelativeTo(null);
@@ -40,12 +35,12 @@ public class CadastrarPessoa extends JFrame {
         rightPanel.setBackground(Color.WHITE);
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 10, 5, 10);
+        gbc.insets = new Insets(9, 10, 8, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        JLabel header = new JLabel("Cadastra-se no Nosso Sistema!", SwingConstants.CENTER);
+        JLabel header = new JLabel("Cadastre um Novo Destino!", SwingConstants.CENTER);
         header.setFont(new Font("Arial", Font.BOLD, 20));
         header.setForeground(new Color(91, 129, 132));
         gbc.gridwidth = 2;
@@ -56,32 +51,26 @@ public class CadastrarPessoa extends JFrame {
         gbc.gridy++;
         gbc.anchor = GridBagConstraints.WEST;
 
-        rightPanel.add(new JLabel("Nome:"), gbc);
+        // Campo Nome
+        rightPanel.add(new JLabel("Nome do Destino:"), gbc);
         gbc.gridy++;
         nomeField = new JTextField(20);
         rightPanel.add(nomeField, gbc);
 
+        // Campo Descrição
         gbc.gridy++;
-        rightPanel.add(new JLabel("Email:"), gbc);
+        rightPanel.add(new JLabel("Descrição:"), gbc);
         gbc.gridy++;
-        emailField = new JTextField(20);
-        rightPanel.add(emailField, gbc);
+        descricaoField = new JTextField(20);
+        rightPanel.add(descricaoField, gbc);
 
+        // Adiciona um espaço entre os campos e o botão
         gbc.gridy++;
-        rightPanel.add(new JLabel("Telefone:"), gbc);
-        gbc.gridy++;
-        telefoneField = new JTextField(20);
-        rightPanel.add(telefoneField, gbc);
-
-        gbc.gridy++;
-        rightPanel.add(new JLabel("CPF ou Registro:"), gbc);
-        gbc.gridy++;
-        cpfField = new JTextField(20);
-        rightPanel.add(cpfField, gbc);
-
-        gbc.gridy++;
-        gbc.gridwidth = 2;
+        gbc.insets = new Insets(20, 10, 5, 10); // Aumenta o espaçamento acima do botão
+        gbc.gridwidth = 2; // O botão ocupará duas colunas
         gbc.anchor = GridBagConstraints.CENTER;
+
+        // Botão Cadastrar
         cadastrarButton = new JButton("Cadastrar");
         cadastrarButton.setBackground(new Color(91, 129, 132));
         cadastrarButton.setForeground(Color.WHITE);
@@ -91,21 +80,25 @@ public class CadastrarPessoa extends JFrame {
         add(rightPanel, BorderLayout.CENTER);
 
         setVisible(true);
+
+        // Ação do botão de cadastro
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nome = nomeField.getText();
-                String email = emailField.getText();
-                String telefone = telefoneField.getText();
+                String descricao = descricaoField.getText();
 
-                Pessoa pessoa = new Pessoa(0, nome, email, telefone);
-                PessoaDao pessoaDao = new PessoaDao();
-                pessoaDao.inserir(pessoa);
+                // Aqui você deve adicionar a lógica para inserir o destino no banco de dados
+                // Destino destino = new Destino(nome, descricao);
+                // DestinoDao destinoDao = new DestinoDao();
+                // destinoDao.inserir(destino);
 
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
             }
         });
     }
+
+    public static void main(String[] args) {
+        new CadastrarDestino();
+    }
 }
-
-

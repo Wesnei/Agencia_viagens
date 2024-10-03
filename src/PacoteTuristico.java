@@ -35,7 +35,7 @@ public class PacoteTuristico extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
         JLabel titleLabel = new JLabel("Cadastre um Pacote Turístico", SwingConstants.CENTER);
-        titleLabel.setFont(new Font("Arial", Font.PLAIN, 24));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         titleLabel.setForeground(new Color(90, 130, 130));
         gbc.gridwidth = 2;
         gbc.fill = GridBagConstraints.HORIZONTAL;
