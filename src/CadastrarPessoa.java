@@ -25,7 +25,7 @@ public class CadastrarPessoa extends JFrame {
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(new Color(91, 129, 132));
         leftPanel.setLayout(new BorderLayout());
-        leftPanel.setPreferredSize(new Dimension(540, getHeight()));
+        leftPanel.setPreferredSize(new Dimension(500, getHeight()));
 
         JLabel title = new JLabel("Horizontes Travel", SwingConstants.CENTER);
         title.setFont(new Font("Serif", Font.ITALIC, 28));
@@ -40,7 +40,7 @@ public class CadastrarPessoa extends JFrame {
         rightPanel.setBackground(Color.WHITE);
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(5, 10, 5, 10); // Diminui o espaçamento vertical (topo e baixo = 5)
+        gbc.insets = new Insets(5, 10, 5, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridx = 0;
         gbc.gridy = 0;

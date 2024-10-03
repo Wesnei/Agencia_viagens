@@ -16,7 +16,7 @@ public class TelaInicial extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel painelEsquerda = new JPanel();
-        painelEsquerda.setBackground(new Color(91, 128, 128)); // Cor aproximada da imagem
+        painelEsquerda.setBackground(new Color(91, 128, 128));
         painelEsquerda.setLayout(new BorderLayout());
         JLabel logoLabel = new JLabel("Horizontes Travel", JLabel.CENTER);
         logoLabel.setFont(new Font("Serif", Font.ITALIC, 28));
@@ -31,7 +31,7 @@ public class TelaInicial extends JFrame {
         painelDireita.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(10, 0, 10, 0); // Espaçamento entre os botões
+        gbc.insets = new Insets(10, 0, 10, 0);
 
         JLabel welcomeLabel = new JLabel("Bem-vindo ao Nosso Sistema!", JLabel.CENTER);
         welcomeLabel.setFont(new Font("Arial", Font.BOLD, 20));
