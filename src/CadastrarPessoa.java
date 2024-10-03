@@ -16,7 +16,7 @@ public class CadastrarPessoa extends JFrame {
 
     public CadastrarPessoa() {
         setTitle("Cadastro");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(800, 500);
         setLocationRelativeTo(null);
 
