@@ -1,4 +1,6 @@
+import dao.ClienteDao;
 import dao.PessoaDao;
+import models.Cliente;
 import models.Pessoa;
 
 import javax.swing.*;
@@ -97,10 +99,15 @@ public class CadastrarPessoa extends JFrame {
                 String nome = nomeField.getText();
                 String email = emailField.getText();
                 String telefone = telefoneField.getText();
+                int cpf = Integer.parseInt(cpfField.getText());
 
                 Pessoa pessoa = new Pessoa(0, nome, email, telefone);
                 PessoaDao pessoaDao = new PessoaDao();
                 pessoaDao.inserir(pessoa);
+
+                Cliente cliente = new Cliente(pessoa.getId(), nome, email, telefone, cpf);
+                ClienteDao clienteDao = new ClienteDao();
+                clienteDao.inserir(cliente);
 
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
             }

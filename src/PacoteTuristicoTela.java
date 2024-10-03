@@ -1,17 +1,22 @@
+import dao.PacoteTuristicoDao;
+import models.PacoteTuristico;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class PacoteTuristico extends JFrame {
+public class PacoteTuristicoTela extends JFrame {
 
     private JTextField nomeField;
     private JTextField precoField;
     private JTextField descricaoField;
     private JButton cadastrarButton;
 
-    public PacoteTuristico() {
+    public PacoteTuristicoTela() {
         setTitle("Cadastro de Pacote Turístico");
         setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel mainPanel = new JPanel(new GridLayout(1, 2));
 
@@ -96,11 +101,25 @@ public class PacoteTuristico extends JFrame {
         mainPanel.add(rightPanel);
 
         add(mainPanel);
+        cadastrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nome = nomeField.getText();
+                Double preco = Double.parseDouble(precoField.getText());
+                String descricao = descricaoField.getText();
+
+                PacoteTuristico pacoteTuristico = new PacoteTuristico(0, nome, preco, descricao);
+                PacoteTuristicoDao pacoteTuristicoDao = new PacoteTuristicoDao();
+                pacoteTuristicoDao.inserir(pacoteTuristico);
+
+                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+            }
+        });
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            PacoteTuristico frame = new PacoteTuristico();
+            PacoteTuristicoTela frame = new PacoteTuristicoTela();
             frame.setVisible(true);
         });
     }

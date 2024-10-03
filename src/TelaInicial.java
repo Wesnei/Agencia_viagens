@@ -83,5 +83,18 @@ public class TelaInicial extends JFrame {
                CadastrarPessoa cadastrarPessoa = new CadastrarPessoa();
             }
         });
+        cadastrarPacoteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PacoteTuristicoTela pacoteTuristico = new PacoteTuristicoTela();
+                pacoteTuristico.setVisible(true);
+            }
+        });
+        cadastrarDestinoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CadastrarDestino cadastrarDestino = new CadastrarDestino();
+            }
+        });
     }
 }
