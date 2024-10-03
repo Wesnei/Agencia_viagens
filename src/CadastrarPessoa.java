@@ -25,7 +25,7 @@ public class CadastrarPessoa extends JFrame {
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(new Color(91, 129, 132));
         leftPanel.setLayout(new BorderLayout());
-        leftPanel.setPreferredSize(new Dimension(500, getHeight()));
+        leftPanel.setPreferredSize(new Dimension(480, getHeight()));
 
         JLabel title = new JLabel("Horizontes Travel", SwingConstants.CENTER);
         title.setFont(new Font("Serif", Font.ITALIC, 28));
