@@ -2,7 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import dao.ReservaDao;
 import models.Reserva;
 
 public class telaReserva extends JFrame {
@@ -106,13 +109,18 @@ public class telaReserva extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Converte a data
+                    // Converte a data do texto no formato desejado
                     String dataTexto = dataReservaField.getText();
-                    Date dataReserva = new Date();
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                    java.util.Date dataReserva = sdf.parse(dataTexto);
+                    java.sql.Date dataSql = new java.sql.Date(dataReserva.getTime());
+
                     int clienteId = Integer.parseInt(clienteIdField.getText());
                     int pacoteId = Integer.parseInt(pacoteIdField.getText());
 
-                    Reserva reserva = new Reserva(1, dataReserva, "Confirmada", clienteId, pacoteId);
+                    Reserva reserva = new Reserva(1, dataSql, "Confirmada", clienteId, pacoteId);
+                    ReservaDao reservaDao = new ReservaDao();
+                    reservaDao.inserir(reserva);
 
                     JOptionPane.showMessageDialog(null, "Reserva confirmada para o cliente ID: " + reserva.getClienteId());
                 } catch (NumberFormatException ex) {

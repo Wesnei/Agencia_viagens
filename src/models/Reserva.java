@@ -26,8 +26,8 @@ public class Reserva {
         this.id = id;
     }
 
-    public Date getDataReserva() {
-        return dataReserva;
+    public java.sql.Date getDataReserva() {
+        return (java.sql.Date) dataReserva;
     }
 
     public void setDataReserva(Date dataReserva) {

@@ -1,3 +1,7 @@
+import dao.DestinoDao;
+import models.Destino;
+
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,6 +11,7 @@ public class CadastrarDestino extends JFrame {
 
     private JTextField nomeField;
     private JTextField descricaoField;
+    private JTextField pacoteIdField;
     private JButton cadastrarButton;
 
     public CadastrarDestino() {
@@ -51,26 +56,31 @@ public class CadastrarDestino extends JFrame {
         gbc.gridy++;
         gbc.anchor = GridBagConstraints.WEST;
 
-        // Campo Nome
         rightPanel.add(new JLabel("Nome do Destino:"), gbc);
         gbc.gridy++;
         nomeField = new JTextField(20);
         rightPanel.add(nomeField, gbc);
 
-        // Campo Descrição
         gbc.gridy++;
         rightPanel.add(new JLabel("Descrição:"), gbc);
         gbc.gridy++;
         descricaoField = new JTextField(20);
         rightPanel.add(descricaoField, gbc);
 
-        // Adiciona um espaço entre os campos e o botão
+
         gbc.gridy++;
-        gbc.insets = new Insets(20, 10, 5, 10); // Aumenta o espaçamento acima do botão
+        rightPanel.add(new JLabel("Pacote ID (Opcional):"), gbc);
+        gbc.gridy++;
+        pacoteIdField = new JTextField(20);  // Novo campo
+        rightPanel.add(pacoteIdField, gbc);
+
+
+        gbc.gridy++;
+        gbc.insets = new Insets(20, 10, 5, 10);
         gbc.gridwidth = 2; // O botão ocupará duas colunas
         gbc.anchor = GridBagConstraints.CENTER;
 
-        // Botão Cadastrar
+
         cadastrarButton = new JButton("Cadastrar");
         cadastrarButton.setBackground(new Color(91, 129, 132));
         cadastrarButton.setForeground(Color.WHITE);
@@ -81,17 +91,20 @@ public class CadastrarDestino extends JFrame {
 
         setVisible(true);
 
-        // Ação do botão de cadastro
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String nome = nomeField.getText();
                 String descricao = descricaoField.getText();
+                String pacoteIdText = pacoteIdField.getText();
 
-                // Aqui você deve adicionar a lógica para inserir o destino no banco de dados
-                // Destino destino = new Destino(nome, descricao);
-                // DestinoDao destinoDao = new DestinoDao();
-                // destinoDao.inserir(destino);
+                int pacoteId;
+                pacoteId = Integer.parseInt(pacoteIdText);
+
+
+                Destino destino = new Destino(0, nome, descricao, pacoteId);
+                DestinoDao destinoDao = new DestinoDao();
+                destinoDao.inserir(destino);
 
                 JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
             }

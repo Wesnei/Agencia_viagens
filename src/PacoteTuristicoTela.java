@@ -12,6 +12,8 @@ public class PacoteTuristicoTela extends JFrame {
     private JTextField precoField;
     private JTextField descricaoField;
     private JButton cadastrarButton;
+    private JTextField textField1;
+    private JLabel PacoteId;
 
     public PacoteTuristicoTela() {
         setTitle("Cadastro de Pacote Turístico");

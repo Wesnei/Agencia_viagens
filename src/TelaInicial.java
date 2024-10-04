@@ -96,5 +96,11 @@ public class TelaInicial extends JFrame {
                 CadastrarDestino cadastrarDestino = new CadastrarDestino();
             }
         });
+        fazerReservaButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                telaReserva TelaReserva = new telaReserva();
+            }
+        });
     }
 }
