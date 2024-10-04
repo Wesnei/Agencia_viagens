@@ -1,5 +1,7 @@
+import dao.DestinoDao;
 import dao.PacoteTuristicoDao;
 import dao.PessoaDao;
+import models.Destino;
 import models.PacoteTuristico;
 import models.Pessoa;
 
@@ -135,7 +137,19 @@ public class Dados extends JFrame {
         destinosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                DestinoDao destinoDao = new DestinoDao();
+                List<Destino> destinos = destinoDao.listar();
 
+                StringBuilder info = new StringBuilder();
+                for (Destino destino : destinos) {
+                    info.append("ID: ").append(destino.getId()).append("\n");
+                    info.append("Nome: ").append(destino.getNome()).append("\n");
+                    info.append("Descrição: ").append(destino.getDescricao()).append("\n");
+                    info.append("Pacote: ").append(destino.getPacoteNome()).append("\n");
+                    info.append("-----------------------------\n");
+                }
+
+                JOptionPane.showMessageDialog(Dados.this, info.toString(), "Lista de Destinos", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }

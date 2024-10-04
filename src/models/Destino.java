@@ -6,6 +6,15 @@ public class Destino {
     private String nome;
     private String descricao;
     private int pacoteId;
+    private String pacoteNome;
+
+    public String getPacoteNome() {
+        return pacoteNome;
+    }
+
+    public void setPacoteNome(String pacoteNome) {
+        this.pacoteNome = pacoteNome;
+    }
 
     public Destino(int id, String nome, String descricao, int pacoteId){
         this.id = id;
