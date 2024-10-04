@@ -37,13 +37,13 @@ Este projeto foi desenvolvido por Wesnei e João Lucas como parte de um estudo p
 2. **Configure o banco de dados MySQL**:
     - Crie o banco de dados para o sistema:
       ```sql
-      CREATE DATABASE horizontes_travel;
+      CREATE DATABASE travel_schema;
       ```
 
 3. **Configure a conexão com o banco de dados**:
     - No arquivo `MyJDBC.java` ou onde estiver configurado, defina os parâmetros de conexão:
       ```properties
-      db.url=jdbc:mysql://localhost:3306/horizontes_travel
+      db.url=jdbc:mysql://localhost:3306/travel_schema
       db.user=seu_usuario
       db.password=sua_senha
       ```
