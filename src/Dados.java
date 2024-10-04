@@ -1,9 +1,11 @@
 import dao.DestinoDao;
 import dao.PacoteTuristicoDao;
 import dao.PessoaDao;
+import dao.ReservaDao;
 import models.Destino;
 import models.PacoteTuristico;
 import models.Pessoa;
+import models.Reserva;
 
 import javax.swing.*;
 import java.awt.*;
@@ -89,7 +91,20 @@ public class Dados extends JFrame {
         reservasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                ReservaDao reservaDao = new ReservaDao();
+                List<Reserva> reservas = reservaDao.listar();
 
+                StringBuilder info = new StringBuilder();
+                for (Reserva reserva : reservas) {
+                    info.append("ID: ").append(reserva.getId()).append("\n");
+                    info.append("Data da Reserva: ").append(reserva.getDataReserva()).append("\n");
+                    info.append("Status: ").append(reserva.getStatus()).append("\n");
+                    info.append("CPF: ").append(reserva.getClienteCpf()).append("\n");
+                    info.append("Nome: ").append(reserva.getPacoteNome()).append("\n");
+                    info.append("-----------------------------\n");
+                }
+
+                JOptionPane.showMessageDialog(Dados.this, info.toString(), "Lista de Reservas", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 

@@ -9,6 +9,8 @@ public class Reserva {
     private String status;
     private int clienteId;
     private int pacoteId;
+    private String clienteCpf;
+    private String pacoteNome;
 
     public Reserva(int id, Date dataReserva, String status, int clienteId, int pacoteId){
         this.id = id;
@@ -16,6 +18,10 @@ public class Reserva {
         this.status = status;
         this.clienteId = clienteId;
         this.pacoteId = pacoteId;
+    }
+
+    public Reserva() {
+
     }
 
     public int getId() {
@@ -57,4 +63,21 @@ public class Reserva {
     public void setPacoteId(int pacoteId) {
         this.pacoteId = pacoteId;
     }
+
+    public String getClienteCpf() {
+        return clienteCpf;
+    }
+
+    public void setClienteCpf(String clienteCpf) {
+        this.clienteCpf = clienteCpf;
+    }
+
+    public String getPacoteNome() {
+        return pacoteNome;
+    }
+
+    public void setPacoteNome(String pacoteNome) {
+        this.pacoteNome = pacoteNome;
+    }
+
 }
