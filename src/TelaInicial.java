@@ -9,6 +9,7 @@ public class TelaInicial extends JFrame {
     private JButton cadastrarPacoteButton;
     private JButton cadastrarDestinoButton;
     private JButton fazerReservaButton;
+    private JButton visualizarRelatoriosButton;
 
     public TelaInicial() {
         setTitle("Horizontes Travel - Sistema");
@@ -44,6 +45,7 @@ public class TelaInicial extends JFrame {
         cadastrarPacoteButton = new JButton("Cadastrar Pacote");
         cadastrarDestinoButton = new JButton("Cadastrar Destino");
         fazerReservaButton = new JButton("Fazer Reserva");
+        visualizarRelatoriosButton = new JButton("Visualizar Dados");
 
         Color buttonColor = new Color(91, 128, 128);
         cadastrarPessoaButton.setBackground(buttonColor);
@@ -54,6 +56,8 @@ public class TelaInicial extends JFrame {
         cadastrarDestinoButton.setForeground(Color.WHITE);
         fazerReservaButton.setBackground(buttonColor);
         fazerReservaButton.setForeground(Color.WHITE);
+        visualizarRelatoriosButton.setBackground(buttonColor);
+        visualizarRelatoriosButton.setForeground(Color.WHITE);
 
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -68,6 +72,8 @@ public class TelaInicial extends JFrame {
         painelDireita.add(cadastrarDestinoButton, gbc);
         gbc.gridy = 5;
         painelDireita.add(fazerReservaButton, gbc);
+        gbc.gridy = 6;
+        painelDireita.add(visualizarRelatoriosButton, gbc);
 
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, painelEsquerda, painelDireita);
         splitPane.setDividerLocation(300);
@@ -77,12 +83,14 @@ public class TelaInicial extends JFrame {
         add(splitPane);
 
         setVisible(true);
+
         cadastrarPessoaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               CadastrarPessoa cadastrarPessoa = new CadastrarPessoa();
+                CadastrarPessoa cadastrarPessoa = new CadastrarPessoa();
             }
         });
+
         cadastrarPacoteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,17 +98,31 @@ public class TelaInicial extends JFrame {
                 pacoteTuristico.setVisible(true);
             }
         });
+
         cadastrarDestinoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CadastrarDestino cadastrarDestino = new CadastrarDestino();
             }
         });
+
         fazerReservaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 telaReserva TelaReserva = new telaReserva();
             }
         });
+
+        visualizarRelatoriosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Dados dados = new Dados();
+                dados.setVisible(true);
+            }
+        });
+    }
+
+    public static void main(String[] args) {
+        new TelaInicial();
     }
 }

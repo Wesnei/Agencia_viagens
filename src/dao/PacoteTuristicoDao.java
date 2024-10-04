@@ -2,11 +2,14 @@ package dao;
 
 import db.MyJDBC;
 import models.PacoteTuristico;
+import models.Pessoa;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PacoteTuristicoDao {
 
@@ -42,4 +45,42 @@ public class PacoteTuristicoDao {
             }
         }
     }
+
+    public List<PacoteTuristico> listar() {
+        List<PacoteTuristico> pacoteTuristicos = new ArrayList<>();
+        Connection connection = MyJDBC.getConnection();
+
+        String sql = "SELECT * FROM `travel_schema`.`pacote_turistico`";
+
+        try {
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                PacoteTuristico pacoteTuristico = new PacoteTuristico(rs.getInt("id"), rs.getString("nome"), rs.getDouble("preco"), rs.getString("descricao"));
+                pacoteTuristico.setId(rs.getInt("id"));
+                pacoteTuristico.setNome(rs.getString("nome"));
+                pacoteTuristico.setPreco(rs.getDouble("preco"));
+                pacoteTuristico.setDescricao(rs.getString("descricao"));
+
+                pacoteTuristicos.add(pacoteTuristico);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return pacoteTuristicos;
+
+    }
+
 }

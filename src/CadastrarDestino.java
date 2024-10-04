@@ -69,7 +69,7 @@ public class CadastrarDestino extends JFrame {
 
 
         gbc.gridy++;
-        rightPanel.add(new JLabel("Pacote ID (Opcional):"), gbc);
+        rightPanel.add(new JLabel("Pacote ID"), gbc);
         gbc.gridy++;
         pacoteIdField = new JTextField(20);  // Novo campo
         rightPanel.add(pacoteIdField, gbc);

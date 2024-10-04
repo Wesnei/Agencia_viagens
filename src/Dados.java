@@ -1,7 +1,13 @@
+import dao.PacoteTuristicoDao;
+import dao.PessoaDao;
+import models.PacoteTuristico;
+import models.Pessoa;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class Dados extends JFrame {
 
@@ -13,7 +19,7 @@ public class Dados extends JFrame {
     public Dados() {
         setTitle("Horizontes Travel - Sistema de Dados");
         setSize(600, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JPanel painelEsquerda = new JPanel();
         painelEsquerda.setBackground(new Color(91, 128, 128));
@@ -40,10 +46,10 @@ public class Dados extends JFrame {
         JLabel selecioneOperacaoLabel = new JLabel("Selecione uma Operação", JLabel.CENTER);
         selecioneOperacaoLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 
-        reservasButton = new JButton("Gerenciar Reservas");
-        pessoasButton = new JButton("Gerenciar Pessoas");
-        pacotesButton = new JButton("Gerenciar Pacotes");
-        destinosButton = new JButton("Gerenciar Destinos");
+        reservasButton = new JButton("Visualizar Reservas");
+        pessoasButton = new JButton("Visualizar Pessoas");
+        pacotesButton = new JButton("Visualizar Pacotes");
+        destinosButton = new JButton("Visualizar Destinos");
 
         Color buttonColor = new Color(91, 128, 128);
         reservasButton.setBackground(buttonColor);
@@ -81,28 +87,55 @@ public class Dados extends JFrame {
         reservasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Gerenciar Reservas foi clicado");
+
             }
         });
 
         pessoasButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Gerenciar Pessoas foi clicado");
+
+                PessoaDao pessoaDao = new PessoaDao();
+                List<Pessoa> pessoas = pessoaDao.listar();
+
+                StringBuilder info = new StringBuilder();
+                for (Pessoa pessoa : pessoas) {
+                    info.append("ID: ").append(pessoa.getId()).append("\n");
+                    info.append("Nome: ").append(pessoa.getNome()).append("\n");
+                    info.append("Email: ").append(pessoa.getEmail()).append("\n");
+                    info.append("Telefone: ").append(pessoa.getTelefone()).append("\n");
+                    info.append("-----------------------------\n");
+                }
+
+                JOptionPane.showMessageDialog(Dados.this, info.toString(), "Lista de Pessoas", JOptionPane.INFORMATION_MESSAGE);
+
             }
         });
 
         pacotesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Gerenciar Pacotes foi clicado");
+
+                PacoteTuristicoDao pacoteTuristicoDao = new PacoteTuristicoDao();
+                List<PacoteTuristico> pacoteTuristicos = pacoteTuristicoDao.listar();
+
+                StringBuilder info = new StringBuilder();
+                for (PacoteTuristico pacoteTuristico : pacoteTuristicos){
+                    info.append("ID: ").append(pacoteTuristico.getId()).append("\n");
+                    info.append("Nome: ").append(pacoteTuristico.getNome()).append("\n");
+                    info.append("Preço: ").append(pacoteTuristico.getPreco()).append("\n");
+                    info.append("Descrição: ").append(pacoteTuristico.getDescricao()).append("\n");
+                }
+
+                JOptionPane.showMessageDialog(Dados.this, info.toString(), "Lista de Pacotes Turisticos", JOptionPane.INFORMATION_MESSAGE);
+
             }
         });
 
         destinosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Gerenciar Destinos foi clicado");
+
             }
         });
     }
