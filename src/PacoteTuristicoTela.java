@@ -106,15 +106,22 @@ public class PacoteTuristicoTela extends JFrame {
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nome = nomeField.getText();
-                Double preco = Double.parseDouble(precoField.getText());
-                String descricao = descricaoField.getText();
+                try {
 
-                PacoteTuristico pacoteTuristico = new PacoteTuristico(0, nome, preco, descricao);
-                PacoteTuristicoDao pacoteTuristicoDao = new PacoteTuristicoDao();
-                pacoteTuristicoDao.inserir(pacoteTuristico);
 
-                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                    String nome = nomeField.getText();
+                    Double preco = Double.parseDouble(precoField.getText());
+                    String descricao = descricaoField.getText();
+
+                    PacoteTuristico pacoteTuristico = new PacoteTuristico(0, nome, preco, descricao);
+                    PacoteTuristicoDao pacoteTuristicoDao = new PacoteTuristicoDao();
+                    pacoteTuristicoDao.inserir(pacoteTuristico);
+
+                    JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+
+                } catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar pacote: " + ex.getMessage());
+                }
             }
         });
     }

@@ -94,19 +94,33 @@ public class CadastrarDestino extends JFrame {
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nome = nomeField.getText();
-                String descricao = descricaoField.getText();
-                String pacoteIdText = pacoteIdField.getText();
-
-                int pacoteId;
-                pacoteId = Integer.parseInt(pacoteIdText);
+                try{
 
 
-                Destino destino = new Destino(0, nome, descricao, pacoteId);
-                DestinoDao destinoDao = new DestinoDao();
-                destinoDao.inserir(destino);
+                    String nome = nomeField.getText();
+                    String descricao = descricaoField.getText();
+                    String pacoteIdText = pacoteIdField.getText();
 
-                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                    int pacoteId;
+                    pacoteId = Integer.parseInt(pacoteIdText);
+
+
+                    Destino destino = new Destino(0, nome, descricao, pacoteId);
+                    DestinoDao destinoDao = new DestinoDao();
+                    boolean sucesso = destinoDao.inserir(destino);
+
+                    if (sucesso) {
+                        JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Erro: Pacote ID inválido. Verifique o ID e tente novamente.", "Erro de Cadastro", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                } catch (NumberFormatException ex){
+                    JOptionPane.showMessageDialog(null, "Erro: O ID deve ser um número inteiro ");
+                } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao cria destino: " + ex.getMessage());
+            }
+
             }
         });
     }

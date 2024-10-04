@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ReservaDao {
 
-    public void inserir(Reserva reserva) {
+    public boolean inserir(Reserva reserva) {
         Connection connection = MyJDBC.getConnection();
         String sql = "INSERT INTO `travel_schema`.`reserva` (`dataReserva`, `status`, `clienteId`, `pacoteId`) VALUES (?, ?, ?, ?)";
 
@@ -25,8 +25,17 @@ public class ReservaDao {
 
             stmt.executeUpdate();
             System.out.println("Reserva inserida com sucesso!");
+
+            return true;
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            if (e.getMessage().contains("foreign key constraint fails")){
+                return false;
+            } else {
+                e.printStackTrace();
+            }
+            return false;
+
         } finally {
             try {
                 connection.close();

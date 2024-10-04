@@ -12,7 +12,7 @@ import java.util.List;
 
 public class DestinoDao {
 
-    public void inserir(Destino destino) {
+    public boolean inserir(Destino destino) {
         Connection connection = MyJDBC.getConnection();
 
         String sql = "INSERT INTO `travel_schema`.`destino` (`nome`, `descricao`, `pacoteId`) VALUES (?, ?, ?)";
@@ -25,8 +25,19 @@ public class DestinoDao {
 
             stmt.executeUpdate();
             System.out.println("Destino inserido com sucesso!");
+
+            return true;
+
         } catch (SQLException e) {
-            e.printStackTrace();
+
+            if (e.getMessage().contains("foreign key constraint fails")) {
+                return false;
+            } else {
+                e.printStackTrace();
+            }
+
+            return false;
+
         } finally {
             try {
                 connection.close();

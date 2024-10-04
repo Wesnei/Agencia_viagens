@@ -109,7 +109,7 @@ public class telaReserva extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    // Converte a data do texto no formato desejado
+
                     String dataTexto = dataReservaField.getText();
                     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                     java.util.Date dataReserva = sdf.parse(dataTexto);
@@ -120,11 +120,16 @@ public class telaReserva extends JFrame {
 
                     Reserva reserva = new Reserva(1, dataSql, "Confirmada", clienteId, pacoteId);
                     ReservaDao reservaDao = new ReservaDao();
-                    reservaDao.inserir(reserva);
+                    boolean sucesso = reservaDao.inserir(reserva);
 
-                    JOptionPane.showMessageDialog(null, "Reserva confirmada para o cliente ID: " + reserva.getClienteId());
+                    if(sucesso){
+                        JOptionPane.showMessageDialog(null, "Reserva confirmada para o cliente ID: " + reserva.getClienteId());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Erro: ID do Pacote ou Cliente inválido. Verifique os IDs e tente novamente.", "Erro de Cadastro", JOptionPane.ERROR_MESSAGE);
+                    }
+
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Erro: ID de Cliente ou Pacote inválido.");
+                    JOptionPane.showMessageDialog(null, "Erro: Os IDs devem ser números inteiros ");
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao criar reserva: " + ex.getMessage());
                 }

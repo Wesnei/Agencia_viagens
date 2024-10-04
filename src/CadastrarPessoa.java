@@ -96,23 +96,38 @@ public class CadastrarPessoa extends JFrame {
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String nome = nomeField.getText();
-                String email = emailField.getText();
-                String telefone = telefoneField.getText();
-                int cpf = Integer.parseInt(cpfField.getText());
 
-                Pessoa pessoa = new Pessoa(0, nome, email, telefone);
-                PessoaDao pessoaDao = new PessoaDao();
-                pessoaDao.inserir(pessoa);
+                try {
 
-                Cliente cliente = new Cliente(pessoa.getId(), nome, email, telefone, cpf);
-                ClienteDao clienteDao = new ClienteDao();
-                clienteDao.inserir(cliente);
+                    String nome = nomeField.getText();
+                    String email = emailField.getText();
+                    String telefone = telefoneField.getText();
+                    int cpf = Integer.parseInt(cpfField.getText());
 
-                JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                    Pessoa pessoa = new Pessoa(0, nome, email, telefone);
+                    PessoaDao pessoaDao = new PessoaDao();
+                    pessoaDao.inserir(pessoa);
+
+                    Cliente cliente = new Cliente(pessoa.getId(), nome, email, telefone, cpf);
+                    ClienteDao clienteDao = new ClienteDao();
+                    clienteDao.inserir(cliente);
+
+                    JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!");
+                } catch (Exception ex){
+                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar pessoa : " + ex.getMessage());
+                }
             }
         });
     }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            CadastrarPessoa frame = new CadastrarPessoa();
+            frame.setVisible(true);
+        });
+    }
 }
+
+
 
 

@@ -10,7 +10,7 @@ public class MyJDBC {
             connection = DriverManager.getConnection(
                     "jdbc:mysql://127.0.0.1:3306/travel_schema",
                     "root",
-                    ""
+                    "9ZDTCpt6@"
             );
             System.out.println("Conexão Estabelecida com Sucesso!");
         } catch (SQLException e) {
