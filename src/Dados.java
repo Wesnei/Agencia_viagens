@@ -98,7 +98,6 @@ public class Dados extends JFrame {
                 for (Reserva reserva : reservas) {
                     info.append("ID: ").append(reserva.getId()).append("\n");
                     info.append("Data da Reserva: ").append(reserva.getDataReserva()).append("\n");
-                    info.append("Status: ").append(reserva.getStatus()).append("\n");
                     info.append("CPF: ").append(reserva.getClienteCpf()).append("\n");
                     info.append("Nome: ").append(reserva.getPacoteNome()).append("\n");
                     info.append("-----------------------------\n");
